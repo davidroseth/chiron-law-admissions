@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | Chiron Law Admissions</title>
+<meta name="description" content="David Roseth — NYU JD, Northwestern MsEd, 176 LSAT, 11 years of expert LSAT instruction. Founder of Chiron Law Admissions, a boutique T14 admissions consulting practice in Chicago.">
+<meta property="og:title" content="About David Roseth | Chiron Law Admissions">
+<meta property="og:description" content="NYU JD · Northwestern MsEd · 176 LSAT · 11 years instruction · 200+ five-star reviews. Founder, Chiron Law Admissions.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://chironadmissions.com/about.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "David Roseth",
+  "jobTitle": "Founder & Principal",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Chiron Law Admissions",
+    "url": "https://chironadmissions.com"
+  },
+  "alumniOf": [
+    { "@type": "CollegeOrUniversity", "name": "NYU School of Law" },
+    { "@type": "CollegeOrUniversity", "name": "Northwestern University" }
+  ],
+  "knowsAbout": ["Law School Admissions", "LSAT Preparation", "T14 Law Schools"],
+  "url": "https://chironadmissions.com/about.html",
+  "sameAs": ["https://www.linkedin.com/in/davidroseth"]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:       #0d1b2a;
+    --navy-mid:   #162236;
+    --navy-light: #1e3352;
+    --cream:      #f5f0e8;
+    --cream-dark: #ede6d6;
+    --gold:       #b8975a;
+    --gold-light: #d4b07a;
+    --text-dark:  #0d1b2a;
+    --text-mid:   #3a4a5c;
+    --text-light: #6b7c8f;
+    --white:      #ffffff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'EB Garamond', Georgia, serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.4rem 4rem;
+    background: rgba(13,27,42,0.96);
+    backdrop-filter: blur(12px);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--white);
+    letter-spacing: 0.08em;
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 2.2rem;
+    list-style: none;
+    align-items: center;
+  }
+  .nav-links a {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.72);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+  .nav-links a.active { color: var(--gold); }
+  .nav-cta {
+    background: transparent;
+    border: 1px solid var(--gold) !important;
+    color: var(--gold) !important;
+    padding: 0.45rem 1.3rem;
+    transition: background 0.2s, color 0.2s !important;
+  }
+  .nav-cta:hover {
+    background: var(--gold) !important;
+    color: var(--navy) !important;
+  }
+
+  /* ── PAGE HEADER ── */
+  .page-header {
+    background: var(--navy);
+    padding: 10rem 6rem 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 80% 60%, rgba(184,151,90,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .page-header-inner {
+    max-width: 680px;
+    position: relative;
+    z-index: 1;
+  }
+  .page-eyebrow {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: block;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.1s both;
+  }
+  .page-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 4vw, 3.6rem);
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1.12;
+    margin-bottom: 1.6rem;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.25s both;
+  }
+  .page-header h1 em { font-style: italic; color: var(--gold-light); }
+  .page-header p {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.18rem;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.6);
+    max-width: 560px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.4s both;
+  }
+
+  /* ── BACKGROUND / TIMELINE ── */
+  .background {
+    background: var(--navy);
+    padding: 0 6rem 7rem;
+    border-bottom: 1px solid rgba(184,151,90,0.12);
+  }
+  .background-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7rem;
+    align-items: start;
+  }
+  .background-left p {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.12rem;
+    line-height: 1.88;
+    color: rgba(255,255,255,0.62);
+    margin-bottom: 1.2rem;
+  }
+  .background-left p:last-child { margin-bottom: 0; }
+  .background-left strong { color: rgba(255,255,255,0.85); font-weight: 500; }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 1.5rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid rgba(184,151,90,0.12);
+  }
+  .timeline-item:first-child { padding-top: 0; }
+  .timeline-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .timeline-year {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    color: var(--gold);
+    text-transform: uppercase;
+    padding-top: 0.25rem;
+  }
+  .timeline-content h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.08rem;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 0.35rem;
+  }
+  .timeline-content p {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.98rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.45);
+  }
+
+  /* ── WHY — ALL SIX ── */
+  .why {
+    background: var(--cream-dark);
+    padding: 7rem 6rem;
+  }
+  .why-header {
+    max-width: 560px;
+    margin-bottom: 4.5rem;
+  }
+  .section-eyebrow {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+    display: block;
+  }
+  .why-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 2.8vw, 2.5rem);
+    font-weight: 400;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+  .why-header p {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-mid);
+  }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+  }
+  .why-item {
+    position: relative;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(184,151,90,0.3);
+  }
+  .why-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.6rem;
+    font-weight: 300;
+    color: rgba(184,151,90,0.22);
+    line-height: 1;
+    margin-bottom: 0.8rem;
+  }
+  .why-item h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--navy);
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+  }
+  .why-item p {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.05rem;
+    line-height: 1.78;
+    color: var(--text-mid);
+  }
+
+  /* ── PHILOSOPHY ── */
+  .philosophy {
+    background: var(--cream);
+    padding: 7rem 6rem;
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 8rem;
+    align-items: start;
+  }
+  .philosophy-left .section-eyebrow { margin-bottom: 1.2rem; }
+  .philosophy-left h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 2.8vw, 2.5rem);
+    font-weight: 400;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 2rem;
+  }
+  .philosophy-left p {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.12rem;
+    line-height: 1.88;
+    color: var(--text-mid);
+    margin-bottom: 1.2rem;
+  }
+  .philosophy-left p:last-child { margin-bottom: 0; }
+  .philosophy-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+    padding-top: 0.5rem;
+  }
+  .truth-item {
+    border-left: 2px solid var(--gold);
+    padding: 1rem 1.5rem;
+    background: var(--cream-dark);
+  }
+  .truth-item p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--navy);
+    line-height: 1.5;
+  }
+
+  /* ── CTA ── */
+  .cta-section {
+    background: var(--navy);
+    padding: 6rem 6rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+  .cta-left h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 2.8vw, 2.5rem);
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 1.2rem;
+  }
+  .cta-left h2 em { font-style: italic; color: var(--gold-light); }
+  .cta-left p {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.55);
+  }
+  .cta-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .cta-action-btn {
+    display: block;
+    padding: 1.1rem 2rem;
+    font-family: 'EB Garamond', serif;
+    font-size: 1.05rem;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    text-align: center;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+  }
+  .cta-action-btn.primary {
+    background: var(--gold);
+    color: var(--navy);
+  }
+  .cta-action-btn.primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+  }
+  .cta-action-btn.secondary {
+    background: transparent;
+    color: rgba(255,255,255,0.65);
+    border: 1px solid rgba(184,151,90,0.3);
+  }
+  .cta-action-btn.secondary:hover {
+    border-color: rgba(184,151,90,0.6);
+    color: var(--gold-light);
+  }
+  .cta-note {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.3);
+    line-height: 1.6;
+    margin-top: 0.3rem;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    border-top: 1px solid rgba(184,151,90,0.1);
+    padding: 2.8rem 6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.08em;
+  }
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+  }
+  .footer-links a {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.35);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-copy {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 2rem; }
+    .page-header { padding: 8rem 2.5rem 4rem; }
+    .background { padding: 0 2.5rem 5rem; }
+    .background-inner { grid-template-columns: 1fr; gap: 3.5rem; }
+    .why { padding: 5rem 2.5rem; }
+    .why-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .philosophy { grid-template-columns: 1fr; padding: 5rem 2.5rem; gap: 3rem; }
+    .cta-section { grid-template-columns: 1fr; padding: 5rem 2.5rem; gap: 3rem; }
+    footer { flex-direction: column; gap: 1.5rem; padding: 2.5rem; text-align: center; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Chiron Law Admissions</a>
+  <ul class="nav-links">
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="consulting.html">Consulting</a></li>
+    <li><a href="lsat.html">LSAT</a></li>
+    <li><a href="contact.html" class="nav-cta">Book a session</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+  <div class="page-header-inner">
+    <span class="page-eyebrow">Background</span>
+    <h1>A former attorney.<br>A credentialed educator.<br><em>An honest advisor.</em></h1>
+    <p>This practice was built on a simple premise: the people best positioned to help law school applicants are those who have lived inside the profession, studied how adults learn under pressure, and refused to trade honest counsel for a good review.</p>
+  </div>
+</section>
+
+<!-- BACKGROUND + TIMELINE -->
+<section class="background">
+  <div class="background-inner">
+
+    <div class="background-left reveal">
+      <p>I came to admissions consulting through two distinct careers that turned out to be more connected than they first appeared.</p>
+      <p>After earning my JD from <strong>NYU School of Law</strong>, I practiced as an attorney — working inside the legal profession long enough to understand what law school actually prepares you for, which schools carry weight in which markets, and how the choices made at the application stage shape the career that follows.</p>
+      <p>Later, I earned an <strong>MsEd from Northwestern University</strong> and moved into education full-time, first as an LSAT instructor and then as a private tutor. That credential isn't decoration. It reflects serious study of how adults acquire complex reasoning skills under pressure — which is precisely what LSAT preparation requires and what effective consulting demands.</p>
+      <p>The combination is unusual. Most admissions consultants are former admissions officers. Most LSAT tutors are not attorneys. I am both — and the overlap is the point.</p>
+    </div>
+
+    <div class="timeline reveal">
+      <div class="timeline-item">
+        <div class="timeline-year">NYU Law</div>
+        <div class="timeline-content">
+          <h4>Juris Doctor</h4>
+          <p>NYU School of Law. One of the top law schools in the country, and the source of the professional perspective this practice is built on.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">Attorney</div>
+        <div class="timeline-content">
+          <h4>Practicing attorney</h4>
+          <p>Years inside the legal profession — understanding what firms look for, how careers develop, and which application decisions actually matter.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">Northwestern</div>
+        <div class="timeline-content">
+          <h4>Master of Science in Education</h4>
+          <p>Northwestern University. Formal study of adult learning, instructional design, and performance under pressure.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">LSAT</div>
+        <div class="timeline-content">
+          <h4>LSAT instructor &amp; tutor · 11 years</h4>
+          <p>Score: 176 — 99.9th percentile. Professional instruction across 11 years and thousands of hours. 200+ five-star reviews. Students improved by as many as 30 points. Many scored over 170.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">Chiron</div>
+        <div class="timeline-content">
+          <h4>Law Admissions Consulting</h4>
+          <p>A private practice combining LSAT expertise, legal career knowledge, and a formal education background. T14-focused, small roster, personal attention.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHY — ALL SIX -->
+<section class="why">
+  <div class="why-header reveal">
+    <span class="section-eyebrow">The difference</span>
+    <h2>Why this practice.<br>Why not the others.</h2>
+    <p>The admissions consulting market is large. Most of it is generic. Here is what separates this practice — honestly and specifically.</p>
+  </div>
+  <div class="why-grid">
+
+    <div class="why-item reveal">
+      <p class="why-num">01</p>
+      <h3>You work with me. Not a junior consultant.</h3>
+      <p>Large consulting firms take your money, assign you to a recent graduate, and give the senior advisor fifteen minutes of review time. Every draft, every strategy session, every decision in this practice goes through me personally.</p>
+    </div>
+
+    <div class="why-item reveal">
+      <p class="why-num">02</p>
+      <h3>A 176 LSAT — and 11 years of instruction at that level.</h3>
+      <p>I scored 176 on the LSAT — a score no competitor in this market can claim — and I have spent eleven years teaching others to think at that level. Former admissions officers cannot help you with your LSAT score. I can, and I understand the test at a depth that comes from mastering it, not merely from having scored well once.</p>
+    </div>
+
+    <div class="why-item reveal">
+      <p class="why-num">03</p>
+      <h3>An NYU JD who knows what the profession actually demands.</h3>
+      <p>Choosing which schools to target, which career narrative to build, which firm or public interest path to frame your application around — this requires knowing what legal careers actually look like. I do.</p>
+    </div>
+
+    <div class="why-item reveal">
+      <p class="why-num">04</p>
+      <h3>A credentialed educator who knows how to teach, not just advise.</h3>
+      <p>The Northwestern MsEd is not a marketing credential. It reflects a formal commitment to understanding how adults learn and improve under pressure — which is the actual skill required to help an anxious applicant write a better personal statement.</p>
+    </div>
+
+    <div class="why-item reveal">
+      <p class="why-num">05</p>
+      <h3>Honest assessment before you spend a dollar.</h3>
+      <p>If your profile doesn't support T14 ambitions, I will tell you clearly and early — before you retain me. That commitment to honesty is unusual in this industry. It's also the only way I'm willing to practice.</p>
+    </div>
+
+    <div class="why-item reveal">
+      <p class="why-num">06</p>
+      <h3>A small roster by design.</h3>
+      <p>I limit the number of clients I take each cycle. Not because I have to — because the quality of my work depends on it. A waiting list is a feature, not a flaw.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy">
+  <div class="philosophy-left reveal">
+    <span class="section-eyebrow">Philosophy</span>
+    <h2>Honest counsel is the only kind worth paying for</h2>
+    <p>The admissions consulting industry has a documented problem with telling clients what they want to hear. Applications are polished, narratives are inflated, and expectations are managed — until the decisions arrive.</p>
+    <p>I operate differently. My job is not to make you feel good about your application. My job is to give you the most accurate, strategic picture of your candidacy and then help you execute as well as the profile supports.</p>
+    <p>That means telling some prospective clients that I am not the right fit for them — that their LSAT score or GPA places T14 admissions outside the realistic range and that paying me would not change that. Those are uncomfortable conversations. I have them anyway.</p>
+    <p>The applicants I do take on deserve a consultant who has maintained that standard.</p>
+  </div>
+  <div class="philosophy-right reveal">
+    <div class="truth-item">
+      <p>"I will tell you honestly if I don't think I can help you reach your goals — before you retain me."</p>
+    </div>
+    <div class="truth-item">
+      <p>"Every application is worked personally by me. No junior associates. No handoffs."</p>
+    </div>
+    <div class="truth-item">
+      <p>"Results are never guaranteed. Honest, expert guidance is."</p>
+    </div>
+    <div class="truth-item">
+      <p>"The kindest thing I can do for a mismatched applicant is refer them elsewhere — and I do."</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-left reveal">
+    <h2>Ready to find out if<br><em>we're a good fit?</em></h2>
+    <p>The first step is an honest conversation. Book an Assessment Session and I will give you a clear-eyed read on your candidacy — your profile, your realistic school list, and whether LSAT tutoring should come first.</p>
+  </div>
+  <div class="cta-right reveal">
+    <a href="contact.html" class="cta-action-btn primary">Book an Assessment Session — $300</a>
+    <a href="contact.html" class="cta-action-btn secondary">Book an LSAT Diagnostic — $250</a>
+    <a href="consulting.html" class="cta-action-btn secondary">See consulting services &nbsp;→</a>
+    <p class="cta-note">Assessment fee credited toward any full engagement. LSAT diagnostic credited toward any tutoring block. Limited spots each cycle.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-logo">Chiron Law Admissions</p>
+  <div class="footer-links">
+    <a href="about.html">About</a>
+    <a href="consulting.html">Consulting</a>
+    <a href="lsat.html">LSAT</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://www.linkedin.com/in/davidroseth" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+  <p class="footer-copy">Chicago, Illinois &nbsp;·&nbsp; By appointment</p>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

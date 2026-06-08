@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admissions Consulting | Chiron Law Admissions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:       #0d1b2a;
+    --navy-mid:   #162236;
+    --navy-light: #1e3352;
+    --cream:      #f5f0e8;
+    --cream-dark: #ede6d6;
+    --gold:       #b8975a;
+    --gold-light: #d4b07a;
+    --text-dark:  #0d1b2a;
+    --text-mid:   #3a4a5c;
+    --text-light: #6b7c8f;
+    --white:      #ffffff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'EB Garamond', Georgia, serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.4rem 4rem;
+    background: rgba(13,27,42,0.96);
+    backdrop-filter: blur(12px);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--white);
+    letter-spacing: 0.08em;
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 2.2rem;
+    list-style: none;
+    align-items: center;
+  }
+  .nav-links a {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.72);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+  .nav-links a.active { color: var(--gold); }
+  .nav-cta {
+    background: transparent;
+    border: 1px solid var(--gold) !important;
+    color: var(--gold) !important;
+    padding: 0.45rem 1.3rem;
+    transition: background 0.2s, color 0.2s !important;
+  }
+  .nav-cta:hover {
+    background: var(--gold) !important;
+    color: var(--navy) !important;
+  }
+
+  /* ── PAGE HEADER ── */
+  .page-header {
+    background: var(--navy);
+    padding: 10rem 6rem 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 55% 80% at 80% 55%, rgba(184,151,90,0.09) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .page-header-texture {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.012'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  .page-header-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .page-eyebrow {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: block;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.1s both;
+  }
+  .page-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 4vw, 3.6rem);
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 1.6rem;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.25s both;
+  }
+  .page-header h1 em { font-style: italic; color: var(--gold-light); }
+  .page-header-left p {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.15rem;
+    line-height: 1.82;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 2.2rem;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.4s both;
+  }
+  .header-actions {
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.52s both;
+  }
+  .btn-primary {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--navy);
+    font-family: 'EB Garamond', serif;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    padding: 0.95rem 2rem;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+  }
+  .btn-ghost {
+    display: inline-block;
+    border-bottom: 1px solid rgba(184,151,90,0.45);
+    color: rgba(255,255,255,0.58);
+    font-family: 'EB Garamond', serif;
+    font-size: 1rem;
+    letter-spacing: 0.06em;
+    padding-bottom: 0.2rem;
+    text-decoration: none;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .btn-ghost:hover { color: var(--gold-light); border-color: var(--gold-light); }
+
+  /* header right — credential card */
+  .header-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(184,151,90,0.2);
+    padding: 2.5rem;
+    position: relative;
+    opacity: 0;
+    animation: fadeIn 1s ease 0.7s both;
+  }
+  .header-card::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: 2rem;
+    width: 52px; height: 3px;
+    background: var(--gold);
+  }
+  .header-card-label {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.8rem;
+  }
+  .header-card-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.4rem;
+    align-items: flex-start;
+  }
+  .header-card-item:last-child { margin-bottom: 0; }
+  .card-dot {
+    width: 5px; height: 5px;
+    background: var(--gold);
+    border-radius: 50%;
+    margin-top: 0.55rem;
+    flex-shrink: 0;
+  }
+  .card-text {
+    font-family: 'EB Garamond', serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.72);
+  }
+  .card-text strong {
+    display: block;
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  /* ── WHO THIS IS FOR ── */
+  .who {
+    background: var(--cream-dark);
+    padding: 6rem 6rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7rem;
+    align-items: start;
+    border-bottom: 1px solid rgba(184,151,90,0.15);
+  }
+  .section-eyebrow {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+    display: block;
+  }
+  .who-left h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 2.8vw, 2.5rem);
+    font-weight: 400;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 1.6rem;
+  }
+  .who-left h2 em { font-style: italic; color: var(--gold); }
+  .who-left p {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.1rem;
+    line-height: 1.85;
+    color: var(--text-mid);
+    margin-bottom: 1.1rem;
+  }
+  .who-left p:last-child { margin-bottom: 0; }
+  .who-right {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .fit-item {
+    padding: 1.6rem 0;
+    border-bottom: 1px solid rgba(184,151,90,0.2);
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 1rem;
+    align-items: start;
+  }
+  .fit-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .fit-check {
+    width: 20px; height: 20px;
+    border: 1px solid rgba(184,151,90,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.2rem;
+    flex-shrink: 0;
+  }
+  .fit-check::after {
+    content: '—';
+    font-family: 'EB Garamond', serif;
+    font-size: 0.7rem;
+    color: var(--gold);
+  }
+  .fit-item-text h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--navy);
+    margin-bottom: 0.3rem;
+  }
+  .fit-item-text p {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.98rem;
+    line-height: 1.65;
+    color: var(--text-mid);
+  }
+
+  /* ── SERVICES ── */
+  .services {
+    background: var(--cream);
+    padding: 7rem 6rem;
+  }
+  .services-header {
+    max-width: 600px;
+    margin-bottom: 4.5rem;
+  }
+  .services-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 2.8vw, 2.5rem);
+    font-weight: 400;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+  .services-header p {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.1rem;
+    line-height: 1.82;
+    color: var(--text-mid);
+  }
+
+  /* Featured card (full-width) */
+  .service-featured {
+    background: var(--navy);
+    padding: 3.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    margin-bottom: 2px;
+    position: relative;
+  }
+  .service-featured::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: var(--gold);
+  }
+  .featured-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--navy);
+    font-family: 'EB Garamond', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.28rem 0.75rem;
+    margin-bottom: 1rem;
+  }
+  .service-tag {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .service-featured h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7rem;
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  .service-featured > div > p {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.08rem;
+    line-height: 1.82;
+    color: rgba(255,255,255,0.58);
+    margin-bottom: 1.8rem;
+  }
+  .service-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7rem;
+    font-weight: 400;
+    color: var(--gold-light);
+  }
+  .service-price span {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.35);
+    font-weight: 400;
+    margin-left: 0.4rem;
+  }
+  .service-includes {
+    list-style: none;
+    margin-top: 0.5rem;
+  }
+  .service-includes li {
+    font-family: 'EB Garamond', serif;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.58);
+    padding: 0.5rem 0 0.5rem 1.2rem;
+    border-bottom: 1px solid rgba(184,151,90,0.1);
+    position: relative;
+    line-height: 1.5;
+  }
+  .service-includes li:last-child { border-bottom: none; }
+  .service-includes li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 0.8rem;
+  }
+  .service-includes.dark li {
+    color: var(--text-mid);
+    border-color: rgba(184,151,90,0.15);
+  }
+  .service-includes.dark li::before { color: var(--gold); }
+  .service-discount-note {
+    margin-top: 1.5rem;
+    padding: 1rem 1.2rem;
+    border-left: 2px solid rgba(184,151,90,0.4);
+  }
+  .service-discount-note p {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.4) !important;
+    font-style: italic;
+    margin-bottom: 0 !important;
+  }
+
+  /* Secondary cards row */
+  .services-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--cream-dark);
+    border: 1px solid var(--cream-dark);
+  }
+  .service-card {
+    background: var(--cream);
+    padding: 3rem;
+    position: relative;
+    transition: background 0.3s;
+  }
+  .service-card:hover { background: var(--white); }
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 0; height: 3px;
+    background: var(--gold);
+    transition: width 0.4s ease;
+  }
+  .service-card:hover::before { width: 100%; }
+  .service-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.45rem;
+    font-weight: 500;
+    color: var(--navy);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  .service-card > p {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.05rem;
+    line-height: 1.78;
+    color: var(--text-mid);
+    margin-bottom: 1.8rem;
+  }
+  .service-card .service-price {
+    font-size: 1.5rem;
+    color: var(--navy);
+    margin-top: 1.8rem;
+  }
+  .service-card .service-price span { color: var(--text-light); }
+
+  /* Assessment card — accent -->*/
+  .service-assessment {
+    background: var(--cream-dark);
+    padding: 3.5rem 6rem;
+    margin-top: 2px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+    border: 1px solid rgba(184,151,90,0.15);
+  }
+  .assessment-left h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--navy);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  .assessment-left h3 em { font-style: italic; color: var(--gold); }
+  .assessment-left p {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.08rem;
+    line-height: 1.82;
+    color: var(--text-mid);
+  }
+  .assessment-right {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    align-items: flex-start;
+  }
+  .assessment-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--navy);
+  }
+  .assessment-price span {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.95rem;
+    color: var(--text-light);
+    font-weight: 400;
+    margin-left: 0.4rem;
+  }
+  .assessment-credit {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.95rem;
+    color: var(--text-light);
+    font-style: italic;
+    margin-bottom: 0.8rem;
+  }
+  .btn-book {
+    display: inline-block;
+    background: var(--navy);
+    color: var(--cream);
+    font-family: 'EB Garamond', serif;
+    font-size: 1rem;
+    letter-spacing: 0.07em;
+    padding: 0.9rem 2rem;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-book:hover { background: var(--navy-light); transform: translateY(-2px); }
+
+  /* ── PROCESS ── */
+  .process {
+    background: var(--navy);
+    padding: 7rem 6rem;
+  }
+  .process-header {
+    max-width: 560px;
+    margin-bottom: 5rem;
+  }
+  .process-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 2.8vw, 2.5rem);
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+  .process-header p {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.52);
+  }
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+  }
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 1.35rem;
+    left: 12.5%; right: 12.5%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(184,151,90,0.35), rgba(184,151,90,0.35), transparent);
+  }
+  .process-step {
+    padding: 0 2rem;
+    text-align: center;
+  }
+  .step-num {
+    width: 44px; height: 44px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.8rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: var(--gold);
+    background: var(--navy);
+    position: relative;
+    z-index: 1;
+  }
+  .process-step h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 0.9rem;
+  }
+  .process-step p {
+    font-family: 'EB Garamond', serif;
+    font-size: 1rem;
+    line-height: 1.72;
+    color: rgba(255,255,255,0.48);
+  }
+
+  /* ── HONEST SECTION ── */
+  .honest {
+    background: var(--cream-dark);
+    padding: 6rem 6rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7rem;
+    align-items: start;
+    border-top: 1px solid rgba(184,151,90,0.15);
+    border-bottom: 1px solid rgba(184,151,90,0.15);
+  }
+  .honest-left h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 2.6vw, 2.4rem);
+    font-weight: 400;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 1.6rem;
+  }
+  .honest-left p {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.1rem;
+    line-height: 1.85;
+    color: var(--text-mid);
+    margin-bottom: 1.1rem;
+  }
+  .honest-left p:last-child { margin-bottom: 0; }
+  .honest-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+    padding-top: 0.3rem;
+  }
+  .honest-item {
+    border-left: 2px solid var(--gold);
+    padding: 1rem 1.5rem;
+    background: rgba(184,151,90,0.05);
+  }
+  .honest-item p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--navy);
+    line-height: 1.5;
+  }
+
+  /* ── CTA ── */
+  .cta-section {
+    background: var(--navy);
+    padding: 6rem 6rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+  .cta-left h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 2.8vw, 2.5rem);
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 1.2rem;
+  }
+  .cta-left h2 em { font-style: italic; color: var(--gold-light); }
+  .cta-left p {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.52);
+  }
+  .cta-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .cta-action-btn {
+    display: block;
+    padding: 1.1rem 2rem;
+    font-family: 'EB Garamond', serif;
+    font-size: 1.05rem;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    text-align: center;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+  }
+  .cta-action-btn.primary {
+    background: var(--gold);
+    color: var(--navy);
+  }
+  .cta-action-btn.primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+  }
+  .cta-action-btn.secondary {
+    background: transparent;
+    color: rgba(255,255,255,0.62);
+    border: 1px solid rgba(184,151,90,0.3);
+  }
+  .cta-action-btn.secondary:hover {
+    border-color: rgba(184,151,90,0.6);
+    color: var(--gold-light);
+  }
+  .cta-note {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.28);
+    line-height: 1.6;
+    margin-top: 0.3rem;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    border-top: 1px solid rgba(184,151,90,0.1);
+    padding: 2.8rem 6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.08em;
+  }
+  .footer-links { display: flex; gap: 2rem; }
+  .footer-links a {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.35);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-copy {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  .reveal {
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 2rem; }
+    .page-header { padding: 8rem 2.5rem 4rem; }
+    .page-header-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .header-card { display: none; }
+    .who { grid-template-columns: 1fr; padding: 5rem 2.5rem; gap: 3.5rem; }
+    .services { padding: 5rem 2.5rem; }
+    .service-featured { grid-template-columns: 1fr; gap: 2.5rem; padding: 2.5rem; }
+    .services-row { grid-template-columns: 1fr; }
+    .service-assessment { grid-template-columns: 1fr; padding: 3rem 2.5rem; gap: 2.5rem; }
+    .process { padding: 5rem 2.5rem; }
+    .process-steps { grid-template-columns: 1fr 1fr; gap: 3rem; }
+    .process-steps::before { display: none; }
+    .honest { grid-template-columns: 1fr; padding: 5rem 2.5rem; gap: 3rem; }
+    .cta-section { grid-template-columns: 1fr; padding: 5rem 2.5rem; gap: 3rem; }
+    footer { flex-direction: column; gap: 1.5rem; padding: 2.5rem; text-align: center; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Chiron Law Admissions</a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="consulting.html" class="active">Consulting</a></li>
+    <li><a href="lsat.html">LSAT</a></li>
+    <li><a href="contact.html" class="nav-cta">Book a session</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+  <div class="page-header-texture"></div>
+  <div class="page-header-inner">
+    <div class="page-header-left">
+      <span class="page-eyebrow">Admissions Consulting</span>
+      <h1>T14-focused.<br>Personally delivered.<br><em>Unflinchingly honest.</em></h1>
+      <p>End-to-end law school admissions consulting for serious applicants. Every engagement is executed personally — no junior associates, no handoffs, no inflated expectations.</p>
+      <div class="header-actions">
+        <a href="contact.html" class="btn-primary">Book an Assessment — $300</a>
+        <a href="#services" class="btn-ghost">See packages &nbsp;→</a>
+      </div>
+    </div>
+    <div class="header-card">
+      <p class="header-card-label">What you get with every engagement</p>
+      <div class="header-card-item">
+        <div class="card-dot"></div>
+        <div class="card-text">
+          <strong>Direct access to David</strong>
+          Every session, every draft, every decision
+        </div>
+      </div>
+      <div class="header-card-item">
+        <div class="card-dot"></div>
+        <div class="card-text">
+          <strong>Honest candidacy assessment</strong>
+          Before you spend a dollar
+        </div>
+      </div>
+      <div class="header-card-item">
+        <div class="card-dot"></div>
+        <div class="card-text">
+          <strong>Legal career insight</strong>
+          From a former practicing attorney
+        </div>
+      </div>
+      <div class="header-card-item">
+        <div class="card-dot"></div>
+        <div class="card-text">
+          <strong>LSAT expertise on call</strong>
+          No other admissions consultant offers this
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO THIS IS FOR -->
+<section class="who">
+  <div class="who-left reveal">
+    <span class="section-eyebrow">Who this is for</span>
+    <h2>A small roster.<br><em>By design.</em></h2>
+    <p>I work exclusively with applicants who are seriously targeting T14 schools and who have — or can realistically build — a competitive profile. I keep my client roster deliberately small because the quality of my work depends on it.</p>
+    <p>The first step is an Assessment Session. That 90-minute conversation is where I tell you, honestly and directly, whether I think I can help you and what your candidacy realistically supports. If I don't think the engagement is right for you, I will say so — before you retain me.</p>
+    <p>That candor is unusual in this industry. It is also the only way I am willing to practice.</p>
+  </div>
+  <div class="who-right reveal">
+    <div class="fit-item">
+      <div class="fit-check"></div>
+      <div class="fit-item-text">
+        <h4>Targeting one or more T14 schools</h4>
+        <p>Yale, Harvard, Stanford, Columbia, Chicago, NYU, Penn, Virginia, Michigan, Duke, Northwestern, Cornell, Georgetown, or UCLA.</p>
+      </div>
+    </div>
+    <div class="fit-item">
+      <div class="fit-check"></div>
+      <div class="fit-item-text">
+        <h4>Have or are working toward a competitive LSAT</h4>
+        <p>Typically 165+ for most T14 targets, 170+ for the top five. LSAT tutoring is available as a standalone or paired service.</p>
+      </div>
+    </div>
+    <div class="fit-item">
+      <div class="fit-check"></div>
+      <div class="fit-item-text">
+        <h4>Want personal attention, not a managed process</h4>
+        <p>You expect the person you're paying to be the person doing the work — not reviewing it for fifteen minutes before it goes out.</p>
+      </div>
+    </div>
+    <div class="fit-item">
+      <div class="fit-check"></div>
+      <div class="fit-item-text">
+        <h4>Value honest feedback over comfortable validation</h4>
+        <p>You want to know where your application is weak, not just where it's strong. You can handle the truth, and you want it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-header reveal">
+    <span class="section-eyebrow">Packages</span>
+    <h2>Precisely the help you need.<br>Nothing superfluous.</h2>
+    <p>Three clearly scoped engagements. Every one is executed personally by me — not delegated. LSAT tutoring is available as a standalone service or combined with any package at a 10% discount.</p>
+  </div>
+
+  <!-- Package A — Featured -->
+  <div class="service-featured reveal">
+    <div>
+      <div class="featured-badge">Most comprehensive</div>
+      <span class="service-tag">Package A</span>
+      <h3>Complete T14 Application</h3>
+      <p>End-to-end guidance through every stage of the application process — from school selection and narrative strategy through final submission and waitlist management. For applicants who want a full partner, not a document editor.</p>
+      <div class="service-price">$7,000 <span>full cycle</span></div>
+      <div class="service-discount-note">
+        <p>A 10% discount applies when Package A is combined with any LSAT tutoring block. Assessment fee ($300) credited in full toward this package.</p>
+      </div>
+    </div>
+    <div>
+      <ul class="service-includes">
+        <li>Strategic school list development (up to 8 schools)</li>
+        <li>Personal statement — unlimited drafts</li>
+        <li>All supplemental essays</li>
+        <li>Résumé review and rewrite</li>
+        <li>Letters of recommendation strategy</li>
+        <li>Diversity statement and addenda</li>
+        <li>Interview preparation</li>
+        <li>Submission timing and sequencing strategy</li>
+        <li>Waitlist letter drafting if needed</li>
+        <li>Post-decision guidance and scholarship negotiation framing</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Packages B + C -->
+  <div class="services-row reveal">
+    <div class="service-card">
+      <span class="service-tag">Package B</span>
+      <h3>Personal Statement &amp; Essays</h3>
+      <p>For applicants whose school list and strategy are set, who need expert help with the written materials — the part of the application most consultants treat as an afterthought and that admissions committees weight most heavily.</p>
+      <ul class="service-includes dark">
+        <li>Personal statement — unlimited drafts</li>
+        <li>Up to 3 supplemental essays</li>
+        <li>Résumé review and feedback</li>
+        <li>Written materials only — strategy not included</li>
+      </ul>
+      <div class="service-price">$2,500 <span>flat fee</span></div>
+    </div>
+    <div class="service-card">
+      <span class="service-tag">Package C</span>
+      <h3>Advisory Hours</h3>
+      <p>Targeted expert guidance for applicants who have a specific question or decision — school list, narrative framing, score assessment, career alignment — and don't need a full-cycle commitment.</p>
+      <ul class="service-includes dark">
+        <li>School list review and prioritization</li>
+        <li>Application narrative strategy</li>
+        <li>LSAT score assessment and target alignment</li>
+        <li>Career goal and school fit analysis</li>
+        <li>Minimum 2 hours per engagement</li>
+      </ul>
+      <div class="service-price">$300 <span>per hour</span></div>
+    </div>
+  </div>
+
+  <!-- Assessment Session -->
+  <div class="service-assessment reveal">
+    <div class="assessment-left">
+      <span class="section-eyebrow">Start here</span>
+      <h3>Assessment Session —<br><em>the right first step</em></h3>
+      <p>A 90-minute paid session to evaluate your full profile: your GPA, LSAT score or target, undergraduate institution, work experience, and goals. I give you an honest read on your candidacy, a realistic school list, and a frank assessment of whether — and how — I can help. No sales pitch. No false optimism. The fee is credited in full toward any engagement you subsequently begin.</p>
+    </div>
+    <div class="assessment-right">
+      <div class="assessment-price">$300 <span>/ 90 minutes</span></div>
+      <p class="assessment-credit">Credited in full toward Package A, B, or Advisory Hours.</p>
+      <a href="contact.html" class="btn-book">Book an Assessment Session</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="process-header reveal">
+    <span class="section-eyebrow" style="color:var(--gold)">How it works</span>
+    <h2>A deliberate, four-stage process</h2>
+    <p>Every engagement follows a structured approach developed from formal education training and refined across years of working with high-stakes applicants.</p>
+  </div>
+  <div class="process-steps reveal">
+    <div class="process-step">
+      <div class="step-num">1</div>
+      <h4>Assessment</h4>
+      <p>A paid 90-minute intake session where I evaluate your full profile honestly and determine whether I can genuinely help you reach your goals.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">2</div>
+      <h4>Strategy</h4>
+      <p>We build your school list, narrative arc, and application timeline — grounded in your actual profile, not wishful thinking.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">3</div>
+      <h4>Execution</h4>
+      <p>Iterative drafting, detailed feedback, and real-time collaboration through every written component of your application.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">4</div>
+      <h4>Submission &amp; Beyond</h4>
+      <p>Final review, submission strategy, and post-submission support including waitlist letters and decision-making guidance.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HONEST SECTION -->
+<section class="honest">
+  <div class="honest-left reveal">
+    <span class="section-eyebrow">A note on honesty</span>
+    <h2>What makes this practice different from most</h2>
+    <p>The admissions consulting industry has a documented problem with telling clients what they want to hear. Applications are polished, narratives are inflated, and expectations are managed — until the decisions arrive.</p>
+    <p>Some prospective clients I speak with are not good candidates for T14 admissions, and paying me $7,000 would not change that. I tell them so clearly, before they retain me, and I refer them elsewhere.</p>
+    <p>The clients I do take on have a right to a consultant who has maintained that standard. Honest counsel is the only kind worth paying for.</p>
+  </div>
+  <div class="honest-right reveal">
+    <div class="honest-item">
+      <p>"I will tell you honestly if I don't think I can help you reach your goals — before you retain me."</p>
+    </div>
+    <div class="honest-item">
+      <p>"Every application is worked personally by me. No junior associates. No handoffs."</p>
+    </div>
+    <div class="honest-item">
+      <p>"Results are never guaranteed. Honest, expert guidance is."</p>
+    </div>
+    <div class="honest-item">
+      <p>"The kindest thing I can do for a mismatched applicant is refer them elsewhere — and I do."</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-left reveal">
+    <h2>Ready to find out if<br><em>we're a good fit?</em></h2>
+    <p>The first step is an honest conversation. Book an Assessment Session and I will give you a clear-eyed read on your candidacy — your profile, your realistic school list, and whether LSAT tutoring should come first.</p>
+  </div>
+  <div class="cta-right reveal">
+    <a href="contact.html" class="cta-action-btn primary">Book an Assessment Session — $300</a>
+    <a href="lsat.html" class="cta-action-btn secondary">Explore LSAT tutoring &nbsp;→</a>
+    <p class="cta-note">Assessment fee credited toward any engagement. Limited spots each cycle.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-logo">Chiron Law Admissions</p>
+  <div class="footer-links">
+    <a href="about.html">About</a>
+    <a href="consulting.html">Consulting</a>
+    <a href="lsat.html">LSAT</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <p class="footer-copy">Chicago, Illinois &nbsp;·&nbsp; By appointment</p>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

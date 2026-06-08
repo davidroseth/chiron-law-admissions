@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LSAT Tutoring | Chiron Law Admissions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:       #0d1b2a;
+    --navy-mid:   #162236;
+    --navy-light: #1e3352;
+    --cream:      #f5f0e8;
+    --cream-dark: #ede6d6;
+    --gold:       #b8975a;
+    --gold-light: #d4b07a;
+    --text-dark:  #0d1b2a;
+    --text-mid:   #3a4a5c;
+    --text-light: #6b7c8f;
+    --white:      #ffffff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'EB Garamond', Georgia, serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.4rem 4rem;
+    background: rgba(13,27,42,0.96);
+    backdrop-filter: blur(12px);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--white);
+    letter-spacing: 0.08em;
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 2.2rem;
+    list-style: none;
+    align-items: center;
+  }
+  .nav-links a {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.72);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+  .nav-links a.active { color: var(--gold); }
+  .nav-cta {
+    background: transparent;
+    border: 1px solid var(--gold) !important;
+    color: var(--gold) !important;
+    padding: 0.45rem 1.3rem;
+    transition: background 0.2s, color 0.2s !important;
+  }
+  .nav-cta:hover {
+    background: var(--gold) !important;
+    color: var(--navy) !important;
+  }
+
+  /* ── PAGE HEADER ── */
+  .page-header {
+    background: var(--navy-mid);
+    padding: 10rem 6rem 7rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-header::before {
+    content: '170';
+    font-family: 'Playfair Display', serif;
+    font-size: 26rem;
+    font-weight: 700;
+    color: rgba(184,151,90,0.05);
+    position: absolute;
+    right: -1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    line-height: 1;
+    letter-spacing: -0.05em;
+    pointer-events: none;
+  }
+  .page-header-texture {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.012'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/G%3E%3C/svg%3E");
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  .page-header-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .page-eyebrow {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: block;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.1s both;
+  }
+  .page-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 4vw, 3.6rem);
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 1.6rem;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.25s both;
+  }
+  .page-header h1 em { font-style: italic; color: var(--gold-light); }
+  .page-header-left p {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.15rem;
+    line-height: 1.82;
+    color: rgba(255,255,255,0.58);
+    margin-bottom: 2.2rem;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.4s both;
+  }
+  .header-actions {
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.52s both;
+  }
+  .btn-primary {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--navy);
+    font-family: 'EB Garamond', serif;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    padding: 0.95rem 2rem;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-ghost {
+    display: inline-block;
+    border-bottom: 1px solid rgba(184,151,90,0.45);
+    color: rgba(255,255,255,0.58);
+    font-family: 'EB Garamond', serif;
+    font-size: 1rem;
+    letter-spacing: 0.06em;
+    padding-bottom: 0.2rem;
+    text-decoration: none;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .btn-ghost:hover { color: var(--gold-light); border-color: var(--gold-light); }
+
+  /* stat pills in header right */
+  .header-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: rgba(184,151,90,0.12);
+    border: 1px solid rgba(184,151,90,0.18);
+    opacity: 0;
+    animation: fadeIn 1s ease 0.7s both;
+  }
+  .stat-row {
+    background: rgba(13,27,42,0.5);
+    padding: 1.6rem 2rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 400;
+    color: var(--gold-light);
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .stat-label {
+    font-family: 'EB Garamond', serif;
+    font-size: 1rem;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.55);
+  }
+
+  /* ── APPROACH ── */
+  .approach {
+    background: var(--cream-dark);
+    padding: 6.5rem 6rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7rem;
+    align-items: start;
+    border-bottom: 1px solid rgba(184,151,90,0.15);
+  }
+  .section-eyebrow {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+    display: block;
+  }
+  .approach-left h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 2.8vw, 2.5rem);
+    font-weight: 400;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 1.6rem;
+  }
+  .approach-left h2 em { font-style: italic; color: var(--gold); }
+  .approach-left p {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.1rem;
+    line-height: 1.88;
+    color: var(--text-mid);
+    margin-bottom: 1.1rem;
+  }
+  .approach-left p:last-child { margin-bottom: 0; }
+  .approach-left strong { color: var(--navy); font-weight: 500; }
+  .approach-right {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .approach-item {
+    padding: 1.6rem 0;
+    border-bottom: 1px solid rgba(184,151,90,0.18);
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 1rem;
+    align-items: start;
+  }
+  .approach-item:first-child { padding-top: 0; }
+  .approach-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .approach-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: rgba(184,151,90,0.45);
+    line-height: 1.2;
+    padding-top: 0.1rem;
+  }
+  .approach-item h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--navy);
+    margin-bottom: 0.35rem;
+  }
+  .approach-item p {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.98rem;
+    line-height: 1.65;
+    color: var(--text-mid);
+  }
+
+  /* ── DIAGNOSTIC ── */
+  .diagnostic {
+    background: var(--navy);
+    padding: 5rem 6rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7rem;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .diagnostic::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 50% 80% at 80% 50%, rgba(184,151,90,0.07) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .diagnostic-left {
+    position: relative;
+    z-index: 1;
+  }
+  .diagnostic-left .section-eyebrow { color: var(--gold); }
+  .diagnostic-left h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 2.6vw, 2.3rem);
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 1.4rem;
+  }
+  .diagnostic-left h2 em { font-style: italic; color: var(--gold-light); }
+  .diagnostic-left p {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.1rem;
+    line-height: 1.85;
+    color: rgba(255,255,255,0.58);
+    margin-bottom: 1rem;
+  }
+  .diagnostic-left p:last-child { margin-bottom: 0; }
+  .diagnostic-right {
+    position: relative;
+    z-index: 1;
+  }
+  .diagnostic-card {
+    background: rgba(184,151,90,0.07);
+    border: 1px solid rgba(184,151,90,0.25);
+    padding: 2.8rem;
+    position: relative;
+  }
+  .diagnostic-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--gold);
+  }
+  .diagnostic-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+  .diagnostic-card p {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.02rem;
+    line-height: 1.78;
+    color: rgba(255,255,255,0.52);
+    margin-bottom: 1.6rem;
+  }
+  .diagnostic-card ul {
+    list-style: none;
+    margin-bottom: 2rem;
+  }
+  .diagnostic-card ul li {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.97rem;
+    color: rgba(255,255,255,0.5);
+    padding: 0.4rem 0 0.4rem 1.1rem;
+    border-bottom: 1px solid rgba(184,151,90,0.1);
+    position: relative;
+    line-height: 1.5;
+  }
+  .diagnostic-card ul li:last-child { border-bottom: none; }
+  .diagnostic-card ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 0.78rem;
+  }
+  .diagnostic-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--gold-light);
+    margin-bottom: 0.4rem;
+  }
+  .diagnostic-price span {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.32);
+    margin-left: 0.4rem;
+  }
+  .diagnostic-credit {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.35);
+    font-style: italic;
+    margin-bottom: 1.5rem;
+  }
+  .btn-book {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--navy);
+    font-family: 'EB Garamond', serif;
+    font-size: 1rem;
+    letter-spacing: 0.07em;
+    padding: 0.85rem 1.8rem;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-book:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  /* ── TUTORING BLOCKS ── */
+  .blocks {
+    background: var(--navy-mid);
+    padding: 7rem 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .blocks::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 60% at 10% 80%, rgba(30,51,82,0.6) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .blocks-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7rem;
+    align-items: end;
+    margin-bottom: 4rem;
+    position: relative;
+    z-index: 1;
+  }
+  .blocks-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 2.8vw, 2.5rem);
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1.2;
+  }
+  .blocks-header h2 em { font-style: italic; color: var(--gold-light); }
+  .blocks-header p {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.5);
+  }
+  .blocks-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    background: rgba(184,151,90,0.08);
+    border: 1px solid rgba(184,151,90,0.1);
+    position: relative;
+    z-index: 1;
+    margin-bottom: 2rem;
+  }
+  .block-card {
+    background: rgba(13,27,42,0.55);
+    padding: 2.5rem 2rem;
+    position: relative;
+    transition: background 0.3s;
+    display: flex;
+    flex-direction: column;
+  }
+  .block-card:hover { background: rgba(22,34,54,0.8); }
+  .block-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 0; height: 2px;
+    background: var(--gold);
+    transition: width 0.4s ease;
+  }
+  .block-card:hover::before { width: 100%; }
+  .block-hours {
+    display: inline-block;
+    background: rgba(184,151,90,0.12);
+    border: 1px solid rgba(184,151,90,0.22);
+    color: var(--gold);
+    font-family: 'EB Garamond', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.22rem 0.65rem;
+    margin-bottom: 1rem;
+    align-self: flex-start;
+  }
+  .block-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 0.7rem;
+    line-height: 1.2;
+  }
+  .block-card p {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.98rem;
+    line-height: 1.68;
+    color: rgba(255,255,255,0.44);
+    flex: 1;
+    margin-bottom: 1.8rem;
+  }
+  .block-price {
+    margin-top: auto;
+    padding-top: 1.4rem;
+    border-top: 1px solid rgba(184,151,90,0.12);
+  }
+  .price-main {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--gold-light);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+  .price-sub {
+    display: block;
+    font-family: 'EB Garamond', serif;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.28);
+    letter-spacing: 0.04em;
+  }
+  .blocks-note {
+    padding: 1.4rem 1.8rem;
+    border-left: 2px solid rgba(184,151,90,0.35);
+    position: relative;
+    z-index: 1;
+  }
+  .blocks-note p {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.98rem;
+    line-height: 1.72;
+    color: rgba(255,255,255,0.38);
+    font-style: italic;
+  }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials {
+    background: var(--cream);
+    padding: 7rem 6rem;
+  }
+  .testimonials-header {
+    max-width: 560px;
+    margin-bottom: 4.5rem;
+  }
+  .testimonials-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 2.8vw, 2.5rem);
+    font-weight: 400;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+  .testimonials-header p {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.1rem;
+    line-height: 1.82;
+    color: var(--text-mid);
+  }
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--cream-dark);
+    margin-bottom: 2px;
+  }
+  .testimonial-card {
+    background: var(--cream);
+    padding: 2.5rem;
+    position: relative;
+    transition: background 0.3s;
+  }
+  .testimonial-card:hover { background: var(--white); }
+  .testimonial-card::before {
+    content: '\201C';
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    color: var(--gold);
+    opacity: 0.18;
+    line-height: 1;
+    position: absolute;
+    top: 1.2rem;
+    left: 1.8rem;
+  }
+  .testimonial-outcome {
+    display: inline-block;
+    background: rgba(184,151,90,0.12);
+    border: 1px solid rgba(184,151,90,0.28);
+    color: var(--gold);
+    font-family: 'EB Garamond', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.8rem;
+    margin-bottom: 1.4rem;
+  }
+  .testimonial-text {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-mid);
+    font-style: italic;
+    padding-top: 0.5rem;
+  }
+  .testimonial-summary {
+    background: var(--navy);
+    padding: 2.5rem 3rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+  .summary-stat {
+    text-align: center;
+    flex-shrink: 0;
+    border-right: 1px solid rgba(184,151,90,0.2);
+    padding-right: 2.5rem;
+  }
+  .summary-stat .big-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 400;
+    color: var(--gold-light);
+    line-height: 1;
+    display: block;
+  }
+  .summary-stat .big-label {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    display: block;
+    margin-top: 0.4rem;
+  }
+  .summary-text p {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.08rem;
+    line-height: 1.82;
+    color: rgba(255,255,255,0.52);
+    font-style: italic;
+  }
+
+  /* ── CTA ── */
+  .cta-section {
+    background: var(--navy-mid);
+    padding: 6rem 6rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+    border-top: 1px solid rgba(184,151,90,0.1);
+  }
+  .cta-left h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 2.8vw, 2.5rem);
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 1.2rem;
+  }
+  .cta-left h2 em { font-style: italic; color: var(--gold-light); }
+  .cta-left p {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.5);
+  }
+  .cta-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .cta-action-btn {
+    display: block;
+    padding: 1.1rem 2rem;
+    font-family: 'EB Garamond', serif;
+    font-size: 1.05rem;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    text-align: center;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+  }
+  .cta-action-btn.primary {
+    background: var(--gold);
+    color: var(--navy);
+  }
+  .cta-action-btn.primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+  }
+  .cta-action-btn.secondary {
+    background: transparent;
+    color: rgba(255,255,255,0.62);
+    border: 1px solid rgba(184,151,90,0.3);
+  }
+  .cta-action-btn.secondary:hover {
+    border-color: rgba(184,151,90,0.6);
+    color: var(--gold-light);
+  }
+  .cta-note {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.28);
+    line-height: 1.6;
+    margin-top: 0.3rem;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    border-top: 1px solid rgba(184,151,90,0.1);
+    padding: 2.8rem 6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.08em;
+  }
+  .footer-links { display: flex; gap: 2rem; }
+  .footer-links a {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.35);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-copy {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  .reveal {
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 2rem; }
+    .page-header { padding: 8rem 2.5rem 5rem; }
+    .page-header::before { display: none; }
+    .page-header-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .header-stats { display: none; }
+    .approach { grid-template-columns: 1fr; padding: 5rem 2.5rem; gap: 3.5rem; }
+    .diagnostic { grid-template-columns: 1fr; padding: 5rem 2.5rem; gap: 3.5rem; }
+    .blocks { padding: 5rem 2.5rem; }
+    .blocks-header { grid-template-columns: 1fr; gap: 1.5rem; }
+    .blocks-grid { grid-template-columns: 1fr 1fr; }
+    .testimonials { padding: 5rem 2.5rem; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .testimonial-summary { grid-template-columns: 1fr; gap: 2rem; }
+    .summary-stat { border-right: none; border-bottom: 1px solid rgba(184,151,90,0.2); padding-right: 0; padding-bottom: 2rem; }
+    .cta-section { grid-template-columns: 1fr; padding: 5rem 2.5rem; gap: 3rem; }
+    footer { flex-direction: column; gap: 1.5rem; padding: 2.5rem; text-align: center; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Chiron Law Admissions</a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="consulting.html">Consulting</a></li>
+    <li><a href="lsat.html" class="active">LSAT</a></li>
+    <li><a href="contact.html" class="nav-cta">Book a session</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+  <div class="page-header-texture"></div>
+  <div class="page-header-inner">
+    <div class="page-header-left">
+      <span class="page-eyebrow">LSAT Tutoring</span>
+      <h1>The score that opens<br><em>every door.</em></h1>
+      <p>One-on-one LSAT tutoring for serious applicants. Diagnostic-first, methodologically rigorous, and sized to what you actually need — not a preset package. Available as a standalone service or paired with admissions consulting.</p>
+      <div class="header-actions">
+        <a href="contact.html" class="btn-primary">Book a Diagnostic — $250</a>
+        <a href="#blocks" class="btn-ghost">See tutoring blocks &nbsp;→</a>
+      </div>
+    </div>
+    <div class="header-stats">
+      <div class="stat-row">
+        <div class="stat-number">+30</div>
+        <div class="stat-label">Points. The most a single student has improved working with David.</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-number">178</div>
+        <div class="stat-label">Highest score achieved — above the student's personal best in practice.</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-number">170+</div>
+        <div class="stat-label">Many students have crossed this threshold. Most started well below it.</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-number">8 wks</div>
+        <div class="stat-label">One student's timeline from 167 to 170+. Short engagements work when the method is right.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="approach">
+  <div class="approach-left reveal">
+    <span class="section-eyebrow">The approach</span>
+    <h2>Diagnostic first.<br><em>Everything else follows.</em></h2>
+    <p>Most LSAT tutoring starts in the wrong place. Students are given drills before anyone has identified what's actually holding their score back. Hours are spent reinforcing habits rather than replacing them.</p>
+    <p>My approach starts with a rigorous diagnostic — understanding not just what questions a student gets wrong, but <strong>why</strong>, and what the pattern of errors reveals about the underlying reasoning habits at play. That diagnosis shapes everything that follows.</p>
+    <p>The LSAT rewards a specific kind of disciplined, analytical thinking. That thinking can be taught. Students who believed they had reached their ceiling have consistently found, with the right instruction, that they had not.</p>
+  </div>
+  <div class="approach-right reveal">
+    <div class="approach-item">
+      <div class="approach-num">01</div>
+      <div>
+        <h4>Diagnostic &amp; error analysis</h4>
+        <p>A full performance assessment across Logical Reasoning and Reading Comprehension — identifying not just which questions go wrong, but the cognitive habits behind them.</p>
+      </div>
+    </div>
+    <div class="approach-item">
+      <div class="approach-num">02</div>
+      <div>
+        <h4>Honest projection</h4>
+        <p>A professional assessment of your realistic score ceiling and the hours likely required to reach it. No inflated targets. No guaranteed outcomes that no one can guarantee.</p>
+      </div>
+    </div>
+    <div class="approach-item">
+      <div class="approach-num">03</div>
+      <div>
+        <h4>Targeted instruction</h4>
+        <p>Sessions focused on the specific question types and reasoning patterns that are holding your score down — not a general curriculum designed for average students.</p>
+      </div>
+    </div>
+    <div class="approach-item">
+      <div class="approach-num">04</div>
+      <div>
+        <h4>Mid-point reassessment</h4>
+        <p>Every block includes a formal check-in. If you're tracking ahead, unused hours are released. If more is needed, we discuss it before you run out of time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIAGNOSTIC SESSION -->
+<section class="diagnostic">
+  <div class="diagnostic-left reveal">
+    <span class="section-eyebrow">Start here</span>
+    <h2>The LSAT Diagnostic<br><em>&amp; Projection Session</em></h2>
+    <p>Before committing to a tutoring block, the right first step is understanding where you stand. The diagnostic session is a 90-minute deep-dive into your current performance — what's working, what isn't, and what a realistic improvement path looks like.</p>
+    <p>I will tell you honestly what I find: your probable score ceiling, the sections most likely to yield improvement, and the hours realistically required to reach your target. If I don't think a tutoring engagement makes sense for your situation, I will say so.</p>
+    <p>The diagnostic fee is credited in full toward any tutoring block you subsequently purchase.</p>
+  </div>
+  <div class="diagnostic-right reveal">
+    <div class="diagnostic-card">
+      <h4>LSAT Diagnostic &amp; Projection Session</h4>
+      <p>A focused 90-minute session covering your current LSAT performance and a professional roadmap forward.</p>
+      <ul>
+        <li>Full performance review across LR and RC</li>
+        <li>Error pattern identification and root-cause analysis</li>
+        <li>Honest score ceiling projection</li>
+        <li>Recommended block size and timeline</li>
+        <li>Decision on whether tutoring is the right move</li>
+      </ul>
+      <div class="diagnostic-price">$250 <span>90-minute session</span></div>
+      <p class="diagnostic-credit">Fee credited in full toward any tutoring block.</p>
+      <a href="contact.html" class="btn-book">Book a Diagnostic Session</a>
+    </div>
+  </div>
+</section>
+
+<!-- TUTORING BLOCKS -->
+<section class="blocks" id="blocks">
+  <div class="blocks-header reveal">
+    <div>
+      <span class="section-eyebrow" style="color:var(--gold)">Tutoring blocks</span>
+      <h2>Sized to what<br><em>you actually need.</em></h2>
+    </div>
+    <div>
+      <p>Rather than sell a fixed number of hours, I size each engagement to the student. The diagnostic session determines which block is appropriate. A 10% discount applies when any block is combined with a consulting package.</p>
+    </div>
+  </div>
+  <div class="blocks-grid reveal">
+    <div class="block-card">
+      <span class="block-hours">6 Hours</span>
+      <h4>Starter Block</h4>
+      <p>For students already close to 170 who need targeted refinement of specific question types or section strategy. Assumes strong fundamentals are already in place.</p>
+      <div class="block-price">
+        <span class="price-main">$1,200</span>
+        <span class="price-sub">$200 / hr</span>
+      </div>
+    </div>
+    <div class="block-card">
+      <span class="block-hours">12 Hours</span>
+      <h4>Standard Block</h4>
+      <p>The most common engagement. For students in the upper 160s with identifiable weak areas and a structured study plan already in place.</p>
+      <div class="block-price">
+        <span class="price-main">$2,280</span>
+        <span class="price-sub">$190 / hr</span>
+      </div>
+    </div>
+    <div class="block-card">
+      <span class="block-hours">20 Hours</span>
+      <h4>Intensive Block</h4>
+      <p>For students who need substantial improvement across multiple sections and have the time, commitment, and timeline to do serious work.</p>
+      <div class="block-price">
+        <span class="price-main">$3,600</span>
+        <span class="price-sub">$180 / hr</span>
+      </div>
+    </div>
+    <div class="block-card">
+      <span class="block-hours">24+ Hours</span>
+      <h4>Full Campaign</h4>
+      <p>For students with a significant gap to close and a longer timeline ahead. Scoped individually following the diagnostic session.</p>
+      <div class="block-price">
+        <span class="price-main">Custom</span>
+        <span class="price-sub">quoted individually</span>
+      </div>
+    </div>
+  </div>
+  <div class="blocks-note reveal">
+    <p>All blocks include a mid-point reassessment. If you're tracking ahead of schedule, unused hours are released. If more work is needed, we discuss an additional block before you run out of time. A 10% discount applies when any tutoring block is combined with a consulting package.</p>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="testimonials-header reveal">
+    <span class="section-eyebrow">What students say</span>
+    <h2>Results, in their own words.</h2>
+    <p>These are unedited accounts from students I have worked with — across different starting points, timelines, and goals.</p>
+  </div>
+
+  <div class="testimonials-grid reveal">
+
+    <div class="testimonial-card">
+      <div class="testimonial-outcome">Score: 178 &nbsp;·&nbsp; Above personal best</div>
+      <p class="testimonial-text">"As I am writing to you, I am unable to contain my excitement. This morning I got my score back from the July test and my jaw dropped when I saw a 178 on my screen. Considering I had never cracked above 175 in my practice tests I am aware I had some luck on my side, but thinking back to the test, it really was my confidence that no question could truly stump me that carried my performance. I can't begin to thank David enough for helping me build that confidence. When I set out on taking the test again after my underwhelming performance last year, I was worried I wouldn't be able to find a program and teacher that could ensure a higher score with so little room for improvement, but David certainly proved me wrong."</p>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="testimonial-outcome">+30 Points &nbsp;·&nbsp; From diagnostic to official score</div>
+      <p class="testimonial-text">"If you're looking for a highly skillful mind to help you understand the LSAT better, then you won't go wrong in choosing David. I increased my LSAT score 30 points from my initial diagnostic score with the help from him. David will coach you into developing the skills needed to understand and recognize the patterns the LSAT throws at you."</p>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="testimonial-outcome">167 → 170+ &nbsp;·&nbsp; 8-Week Engagement</div>
+      <p class="testimonial-text">"I had less than 8 weeks to work with a tutor and try to get my score up from a 167 to at least a 170. Working with David I learned how to really dissect the exam into different problem types and approach these problems methodically. All the logical reasoning I was doing subconsciously before, he helped me put into words and practice. I also learned a completely new approach to RC that completely changed how I approached RC sections and boosted my score immensely. I was convinced that I had reached my max potential for the exam and David really unlocked a new skillset for me that made the difference. More than worth every penny."</p>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="testimonial-outcome">+20 Points &nbsp;·&nbsp; 6-Month Engagement</div>
+      <p class="testimonial-text">"I worked with David for about 6 months and was able to increase my score 20 points! I'm so thankful for his help and wouldn't have been able to do it without him. He was patient with me, and took the time to make sure I really understood all of the material. He's very intelligent and what I appreciated most was his help in answering any and all my questions. If I didn't understand something, he would reframe his explanation to make sure I got it."</p>
+    </div>
+
+  </div>
+
+  <div class="testimonial-summary reveal">
+    <div class="summary-stat">
+      <span class="big-num">30</span>
+      <span class="big-label">Max points gained</span>
+    </div>
+    <div class="summary-text">
+      <p>Students I have worked with have improved their scores by as many as 30 points. Many scored over 170 from starting points in the upper 150s and low 160s, and one reached a 178 — above their personal best in practice — crediting the confidence and methodology we built together. Students who believed they had reached their ceiling have consistently found, with the right instruction, that they had not.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-left reveal">
+    <h2>Ready to find out<br><em>where you stand?</em></h2>
+    <p>The right first step is a Diagnostic Session — 90 minutes to assess your current performance, understand your realistic ceiling, and determine what a tutoring engagement should look like. The fee is credited toward any block you begin.</p>
+  </div>
+  <div class="cta-right reveal">
+    <a href="contact.html" class="cta-action-btn primary">Book a Diagnostic Session — $250</a>
+    <a href="consulting.html" class="cta-action-btn secondary">Explore admissions consulting &nbsp;→</a>
+    <p class="cta-note">Diagnostic fee credited in full toward any tutoring block. 10% discount when paired with a consulting package.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-logo">Chiron Law Admissions</p>
+  <div class="footer-links">
+    <a href="about.html">About</a>
+    <a href="consulting.html">Consulting</a>
+    <a href="lsat.html">LSAT</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <p class="footer-copy">Chicago, Illinois &nbsp;·&nbsp; By appointment</p>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
