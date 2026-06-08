@@ -595,31 +595,45 @@
     <h2 class="form-heading">Tell me about your situation</h2>
     <p class="form-subheading">I'll respond personally within one to two business days. For a quicker read on fit, include your GPA, undergraduate institution, and top school targets alongside your LSAT score.</p>
 
-    <div class="contact-form" id="contactForm">
+    <form
+      class="contact-form"
+      id="contactForm"
+      name="chiron-inquiry"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      onsubmit="handleSubmit(event)"
+    >
+      <!-- Netlify required hidden fields -->
+      <input type="hidden" name="form-name" value="chiron-inquiry">
+      <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
+
+      <!-- Hidden field captures toggle selection -->
+      <input type="hidden" name="inquiry-type" id="inquiry-type" value="assessment">
 
       <div class="form-row">
         <div class="form-group">
           <label for="fname">First name</label>
-          <input type="text" id="fname" placeholder="Jane">
+          <input type="text" id="fname" name="first-name" placeholder="Jane" required>
         </div>
         <div class="form-group">
           <label for="lname">Last name</label>
-          <input type="text" id="lname" placeholder="Smith">
+          <input type="text" id="lname" name="last-name" placeholder="Smith">
         </div>
       </div>
 
       <div class="form-group">
         <label for="email">Email address</label>
-        <input type="email" id="email" placeholder="jane@example.com">
+        <input type="email" id="email" name="email" placeholder="jane@example.com" required>
       </div>
 
       <div class="form-group">
         <label>I'm interested in</label>
         <div class="session-toggle">
-          <button class="toggle-option selected" id="toggle-assessment" onclick="setToggle('assessment')">Assessment Session</button>
-          <button class="toggle-option" id="toggle-diagnostic" onclick="setToggle('diagnostic')">LSAT Diagnostic</button>
-          <button class="toggle-option" id="toggle-consulting" onclick="setToggle('consulting')">Admissions Consulting</button>
-          <button class="toggle-option" id="toggle-general" onclick="setToggle('general')">General inquiry</button>
+          <button type="button" class="toggle-option selected" id="toggle-assessment" onclick="setToggle('assessment')">Assessment Session</button>
+          <button type="button" class="toggle-option" id="toggle-diagnostic" onclick="setToggle('diagnostic')">LSAT Diagnostic</button>
+          <button type="button" class="toggle-option" id="toggle-consulting" onclick="setToggle('consulting')">Admissions Consulting</button>
+          <button type="button" class="toggle-option" id="toggle-general" onclick="setToggle('general')">General inquiry</button>
         </div>
       </div>
 
@@ -628,22 +642,22 @@
       <div class="form-row">
         <div class="form-group">
           <label for="lsat">LSAT score (current or target) · GPA · Undergraduate institution</label>
-          <input type="text" id="lsat" placeholder="e.g. 165, or untested">
+          <input type="text" id="lsat" name="lsat-score" placeholder="e.g. 165, or untested">
         </div>
         <div class="form-group">
           <label for="gpa">Undergraduate GPA</label>
-          <input type="text" id="gpa" placeholder="e.g. 3.7">
+          <input type="text" id="gpa" name="gpa" placeholder="e.g. 3.7">
         </div>
       </div>
 
       <div class="form-group">
         <label for="schools">Schools you're targeting</label>
-        <input type="text" id="schools" placeholder="e.g. Columbia, NYU, Chicago, Michigan">
+        <input type="text" id="schools" name="target-schools" placeholder="e.g. Columbia, NYU, Chicago, Michigan">
       </div>
 
       <div class="form-group">
         <label for="timeline">Application cycle</label>
-        <select id="timeline">
+        <select id="timeline" name="application-cycle">
           <option value="" disabled selected>Select your cycle</option>
           <option>2025–2026 (applying this fall)</option>
           <option>2026–2027 (applying next year)</option>
@@ -653,12 +667,12 @@
 
       <div class="form-group">
         <label for="message">Anything else I should know</label>
-        <textarea id="message" placeholder="Your background, specific concerns, questions about fit — whatever feels relevant. The more context you give me, the more useful my response will be."></textarea>
+        <textarea id="message" name="message" placeholder="Your background, specific concerns, questions about fit — whatever feels relevant. The more context you give me, the more useful my response will be."></textarea>
       </div>
 
-      <button class="submit-btn" onclick="handleSubmit()">Send message</button>
+      <button type="submit" class="submit-btn">Send message</button>
       <p class="form-fine-print">Assessment fee ($300) and LSAT diagnostic fee ($250) are each credited in full toward any subsequent engagement. All inquiries are confidential.</p>
-    </div>
+    </form>
 
     <div class="form-success" id="formSuccess">
       <h3>Message received.</h3>
@@ -707,11 +721,12 @@
     setToggle(type);
   }
 
-  // Toggle buttons in the form
+  // Toggle buttons in the form — also updates hidden input for Netlify
   function setToggle(type) {
     document.querySelectorAll('.toggle-option').forEach(b => b.classList.remove('selected'));
     const target = document.getElementById('toggle-' + type);
     if (target) target.classList.add('selected');
+    document.getElementById('inquiry-type').value = type;
   }
 
   // Sync left-panel clicks to form toggle
@@ -722,16 +737,24 @@
     });
   });
 
-  // Form submit (demo — no backend)
-  function handleSubmit() {
-    const email = document.getElementById('email').value.trim();
-    const fname = document.getElementById('fname').value.trim();
-    if (!email || !fname) {
-      document.getElementById('email').focus();
-      return;
-    }
-    document.getElementById('contactForm').style.display = 'none';
-    document.getElementById('formSuccess').classList.add('visible');
+  // Netlify form submission — submits for real, then shows success state
+  function handleSubmit(e) {
+    e.preventDefault();
+    const form = document.getElementById('contactForm');
+    const formData = new FormData(form);
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData).toString()
+    })
+    .then(() => {
+      form.style.display = 'none';
+      document.getElementById('formSuccess').classList.add('visible');
+    })
+    .catch(() => {
+      alert('Something went wrong. Please email david@chironadmissions.com directly.');
+    });
   }
 
   // Scroll reveal
