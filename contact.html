@@ -4,10 +4,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Book a Session | Chiron Law Admissions</title>
-<meta name="description" content="Book an Assessment Session ($300) or LSAT Diagnostic ($250) with David Roseth — Chiron Law Admissions. T14 admissions consulting and LSAT tutoring. Every inquiry receives a personal response.">
-<meta property="og:title" content="Book a Session | Chiron Law Admissions">
-<meta property="og:description" content="Book an Assessment Session or LSAT Diagnostic. Every inquiry answered personally by David Roseth within two business days.">
+<title>Get in Touch | Chiron Law Admissions</title>
+<meta name="description" content="Get in touch with David Roseth at Chiron Law Admissions. Tell me about your candidacy and goals — I'll respond personally with honest next steps, whether that's an Assessment Session, an LSAT Diagnostic, or pointing you elsewhere.">
+<meta property="og:title" content="Get in Touch | Chiron Law Admissions">
+<meta property="og:description" content="Tell me about your candidacy and goals. Every inquiry answered personally by David Roseth within two business days — with honest next steps.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://chironadmissions.com/contact.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -352,7 +352,7 @@
   /* Session type toggle */
   .session-toggle {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 2px;
     background: var(--cream-dark);
     border: 1px solid rgba(13,27,42,0.12);
@@ -548,7 +548,7 @@
     <li><a href="about.html">About</a></li>
     <li><a href="consulting.html">Consulting</a></li>
     <li><a href="lsat.html">LSAT</a></li>
-    <li><a href="contact.html" class="active nav-cta">Book a session</a></li>
+    <li><a href="contact.html" class="active nav-cta">Get in Touch</a></li>
   </ul>
 </nav>
 
@@ -561,34 +561,31 @@
     <div class="left-content">
       <span class="page-eyebrow">Get in touch</span>
       <h1>The first step is<br>an honest<br><em>conversation.</em></h1>
-      <p class="intro">Use the form to reach out, or send an email directly. Every inquiry gets a personal response — not a drip sequence, not a calendar bot. I read every message and I reply to every one that's a genuine fit.</p>
+      <p class="intro">Use the form to tell me about your candidacy and goals, or send an email directly. There's no cost to reach out — I read every message personally and reply with honest next steps, whether that's an Assessment Session, an LSAT Diagnostic, or simply pointing you toward better-fit resources.</p>
 
       <div class="session-options">
-        <div class="session-option active" onclick="selectSession(this, 'assessment')">
+        <div class="session-option active" onclick="selectSession(this, 'consulting')">
           <div class="session-option-inner">
             <div class="session-option-info">
-              <h4>Assessment Session</h4>
-              <p>Full profile review · Realistic school list · Honest candidacy read</p>
+              <h4>Admissions Consulting</h4>
+              <p>Tell me about your candidacy and goals. If it's a fit, I'll recommend an Assessment Session ($300, credited toward any engagement) as the next step.</p>
             </div>
-            <div class="session-price">$300</div>
           </div>
         </div>
-        <div class="session-option" onclick="selectSession(this, 'diagnostic')">
+        <div class="session-option" onclick="selectSession(this, 'lsat')">
           <div class="session-option-inner">
             <div class="session-option-info">
-              <h4>LSAT Diagnostic Session</h4>
-              <p>Performance assessment · Score ceiling projection · Block recommendation</p>
+              <h4>LSAT Tutoring</h4>
+              <p>Tell me about your LSAT score and goals. If it's a fit, I'll recommend an LSAT Diagnostic ($250, credited toward any tutoring block) as the next step.</p>
             </div>
-            <div class="session-price">$250</div>
           </div>
         </div>
         <div class="session-option" onclick="selectSession(this, 'general')">
           <div class="session-option-inner">
             <div class="session-option-info">
               <h4>General inquiry</h4>
-              <p>Questions about services, availability, or fit</p>
+              <p>Questions about services, availability, or fit.</p>
             </div>
-            <div class="session-price">—</div>
           </div>
         </div>
       </div>
@@ -620,7 +617,7 @@
       <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
 
       <!-- Hidden field captures toggle selection -->
-      <input type="hidden" name="inquiry-type" id="inquiry-type" value="assessment">
+      <input type="hidden" name="inquiry-type" id="inquiry-type" value="consulting">
 
       <div class="form-row">
         <div class="form-group">
@@ -641,9 +638,8 @@
       <div class="form-group">
         <label>I'm interested in</label>
         <div class="session-toggle">
-          <button type="button" class="toggle-option selected" id="toggle-assessment" onclick="setToggle('assessment')">Assessment Session</button>
-          <button type="button" class="toggle-option" id="toggle-diagnostic" onclick="setToggle('diagnostic')">LSAT Diagnostic</button>
-          <button type="button" class="toggle-option" id="toggle-consulting" onclick="setToggle('consulting')">Admissions Consulting</button>
+          <button type="button" class="toggle-option selected" id="toggle-consulting" onclick="setToggle('consulting')">Admissions Consulting</button>
+          <button type="button" class="toggle-option" id="toggle-lsat" onclick="setToggle('lsat')">LSAT Tutoring</button>
           <button type="button" class="toggle-option" id="toggle-general" onclick="setToggle('general')">General inquiry</button>
         </div>
       </div>
@@ -687,7 +683,7 @@
       </div>
 
       <button type="submit" class="submit-btn">Send message</button>
-      <p class="form-fine-print">Assessment fee ($300) and LSAT diagnostic fee ($250) are each credited in full toward any subsequent engagement. All inquiries are confidential.</p>
+      <p class="form-fine-print">If an Assessment Session ($300) or LSAT Diagnostic ($250) is the right next step, the fee is credited in full toward any subsequent engagement. All inquiries are confidential.</p>
     </form>
 
     <div class="form-success" id="formSuccess">
@@ -705,14 +701,14 @@
     <p>Every inquiry gets a direct reply from me — not a template, not an assistant. If your situation seems like a fit, I'll suggest next steps. If it doesn't, I'll tell you that too.</p>
   </div>
   <div class="expect-item reveal">
-    <span class="expect-num">At the first session</span>
-    <h4>An honest assessment of your candidacy</h4>
-    <p>Whether it's an Assessment Session or an LSAT Diagnostic, the first session is built around telling you the truth — what your profile supports, what it doesn't, and what the realistic path forward looks like.</p>
+    <span class="expect-num">If it's a fit</span>
+    <h4>An honest recommendation, then an honest assessment</h4>
+    <p>If your profile looks like a strong match, I'll recommend an Assessment Session or LSAT Diagnostic — paid sessions built around telling you the truth about what your profile supports, what it doesn't, and what the realistic path forward looks like.</p>
   </div>
   <div class="expect-item reveal">
-    <span class="expect-num">Before you commit</span>
-    <h4>Clarity before you spend a dollar more</h4>
-    <p>The session fee exists to create a serious conversation. If I don't think a full engagement makes sense for you after that session, I will tell you before you retain me — and the session fee stands on its own.</p>
+    <span class="expect-num">Before you spend anything</span>
+    <h4>Clarity, with no obligation</h4>
+    <p>There's no cost to reach out, and no pressure if a paid session isn't the right fit. If we do move forward and I don't think a full engagement makes sense afterward, I'll tell you before you retain me — and the session fee stands on its own.</p>
   </div>
 </section>
 
