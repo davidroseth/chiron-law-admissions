@@ -796,6 +796,83 @@
     footer { flex-direction: column; gap: 1.5rem; padding: 2.5rem; text-align: center; }
     .footer-links { flex-wrap: wrap; justify-content: center; }
   }
+
+  /* ── MOBILE NAV ── */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: rgba(255,255,255,0.8);
+    transition: all 0.3s ease;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .mobile-nav {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(13,27,42,0.98);
+    z-index: 99;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.2rem;
+  }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav a {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    transition: color 0.2s;
+  }
+  .mobile-nav a:hover, .mobile-nav a.active { color: var(--gold-light); }
+  .mobile-nav a.nav-cta-mobile {
+    font-size: 1.2rem;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 0.7rem 2.2rem;
+    margin-top: 0.8rem;
+    font-family: 'EB Garamond', serif;
+    letter-spacing: 0.1em;
+  }
+
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+  }
+
+  .footer-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.25rem;
+  }
+  .footer-email a {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+  .footer-email a:hover { color: var(--gold); }
+  @media (max-width: 900px) {
+    .footer-bottom { align-items: center; }
+  }
+
 </style>
 </head>
 <body>
@@ -809,7 +886,15 @@
     <li><a href="lsat.html">LSAT</a></li>
     <li><a href="contact.html" class="nav-cta">Get in Touch</a></li>
   </ul>
+
+  <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
 </nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="about.html">About</a>
+    <a href="consulting.html" class="active">Consulting</a>
+    <a href="lsat.html">LSAT</a>
+    <a href="contact.html" class="nav-cta-mobile">Get in Touch</a>
+</div>
 
 <!-- PAGE HEADER -->
 <section class="page-header">
@@ -990,7 +1075,7 @@
     <div class="process-step">
       <div class="step-num">1</div>
       <h4>Inquiry</h4>
-      <p>You tell me about your candidacy and goals. I review it personally and let you know honestly whether I think we're a fit — and if so, we begin with a paid Assessment Session to evaluate your full profile in depth.</p>
+      <p>Tell me about your candidacy and goals. I respond personally, review your situation, and — if it looks like a fit — invite you to complete a brief questionnaire. From there, we schedule a paid Assessment Session ($300, credited toward any engagement) to evaluate your full profile in depth: your GPA, LSAT, school list, narrative, and realistic range.</p>
     </div>
     <div class="process-step">
       <div class="step-num">2</div>
@@ -1042,7 +1127,7 @@
 
       <div style="padding:2.2rem 0; border-bottom:1px solid rgba(184,151,90,0.18);">
         <h4 style="font-family:'Playfair Display',serif; font-size:1.18rem; font-weight:500; color:var(--navy); margin-bottom:0.8rem;">Do you guarantee results?</h4>
-        <p style="font-family:'EB Garamond',serif; font-size:1.08rem; line-height:1.82; color:var(--text-mid);">No — and any consultant who does is telling you what you want to hear. What I guarantee is this: honest assessment of your candidacy before you retain me, expert strategic guidance built on your actual profile rather than generic templates, and personal attention on every piece of work from start to finish. The rest depends on the strength of your application and the decisions of admissions committees I do not control.</p>
+        <p style="font-family:'EB Garamond',serif; font-size:1.08rem; line-height:1.82; color:var(--text-mid);">No — and any consultant who does is telling you what you want to hear. What I guarantee is this: honest assessment of your candidacy before you retain me, expert strategic guidance built on your actual profile rather than generic templates, and personal attention on every piece of work from start to finish. The rest depends on the strength of your application and the decisions of admissions committees I do not control — but my job is to ensure that whatever your profile supports, your application reflects it at the highest possible level.</p>
       </div>
 
       <div style="padding:2.2rem 0; border-bottom:1px solid rgba(184,151,90,0.18);">
@@ -1078,11 +1163,14 @@
   <div class="footer-links">
     <a href="about.html">About</a>
     <a href="consulting.html">Consulting</a>
-    <a href="lsat.html">LSAT</a>
+    <a href="lsat.html">Lsat</a>
     <a href="contact.html">Contact</a>
     <a href="https://www.linkedin.com/in/davidroseth" target="_blank" rel="noopener">LinkedIn</a>
   </div>
-  <p class="footer-copy">Chicago, Illinois &nbsp;·&nbsp; By appointment</p>
+  <div class="footer-bottom">
+    <p class="footer-email"><a href="mailto:david@chironadmissions.com">david@chironadmissions.com</a></p>
+    <p class="footer-copy">Chicago, Illinois &nbsp;&middot;&nbsp; By appointment &nbsp;&middot;&nbsp; &copy; 2026 Chiron Law Admissions LLC</p>
+  </div>
 </footer>
 
 <script>
@@ -1097,5 +1185,26 @@
   }, { threshold: 0.08 });
   reveals.forEach(el => observer.observe(el));
 </script>
+
+<script>
+  (function() {
+    const btn = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    if (!btn || !mobileNav) return;
+    btn.addEventListener('click', function() {
+      btn.classList.toggle('open');
+      mobileNav.classList.toggle('open');
+      document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+    });
+    mobileNav.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', function() {
+        btn.classList.remove('open');
+        mobileNav.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+  })();
+</script>
+
 </body>
 </html>
